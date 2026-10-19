@@ -7,23 +7,14 @@
   line-height: 1.5;
   font-weight: 400;
   font-size: 16px;
-
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
+  color: #e5e7eb;
+  background-color: #111827;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-
 
 html {
   -webkit-text-size-adjust: 100%;
@@ -33,17 +24,38 @@ body {
   margin: 0;
   overflow-x: hidden;
   min-height: 100vh;
-  background-color: #f8f9fa;
-  background-image: 
-    linear-gradient(90deg, rgba(0, 51, 102, 0.03) 1px, transparent 1px),
-    linear-gradient(rgba(0, 51, 102, 0.03) 1px, transparent 1px);
+  background-color: #111827;
+  background-image:
+    linear-gradient(90deg, rgba(148, 163, 184, 0.06) 1px, transparent 1px),
+    linear-gradient(rgba(148, 163, 184, 0.06) 1px, transparent 1px);
   background-size: 20px 20px;
+}
+
+a {
+  font-weight: 500;
+  color: #60a5fa;
+  text-decoration: inherit;
+}
+
+button {
+  background-color: transparent;
 }
 
 @media (prefers-color-scheme: light) {
   :root {
-    color: #213547;
-    background-color: #ffffff;
+    color: #1f2937;
+    background-color: #f8fafc;
+  }
+
+  body {
+    background-color: #f8f9fa;
+    background-image:
+      linear-gradient(90deg, rgba(0, 51, 102, 0.03) 1px, transparent 1px),
+      linear-gradient(rgba(0, 51, 102, 0.03) 1px, transparent 1px);
+  }
+
+  a {
+    color: #646cff;
   }
 
   button {
