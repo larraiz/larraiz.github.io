@@ -8,7 +8,7 @@ import {
   CheckCircle,
 } from "lucide-react";
 import { motion } from "framer-motion";
-import { useState, type MouseEvent } from "react";
+import { useEffect, useState, type MouseEvent } from "react";
 
 // Default export React component for a single-file portfolio website
 // Tailwind CSS required. To preview: create a new React app (Vite or CRA/Next),
@@ -16,6 +16,14 @@ import { useState, type MouseEvent } from "react";
 
 export default function AppSP() {
   const [navOpen, setNavOpen] = useState(false);
+  useEffect(() => {
+    if (!navOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setNavOpen(false);
+    };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [navOpen]);
   // const [expandedAccordion, setExpandedAccordion] = useState<string | null>(null);
 
   const contact = {
@@ -143,8 +151,9 @@ export default function AppSP() {
           <div className="flex items-center gap-3 md:gap-6">
             <button
               type="button"
-              aria-label="Toggle navigation"
+              aria-label={navOpen ? "Close navigation menu" : "Open navigation menu"}
               aria-expanded={navOpen}
+              aria-controls="site-nav"
               onClick={() => setNavOpen((o) => !o)}
               className="md:hidden p-2 -ml-2 rounded hover:bg-white/10"
             >
@@ -177,15 +186,17 @@ export default function AppSP() {
       <div className="relative flex flex-1 min-h-0 min-w-0">
         {navOpen && (
           <div
+            aria-hidden="true"
             className="md:hidden fixed inset-0 top-12 bg-black/40 z-30"
             onClick={() => setNavOpen(false)}
           />
         )}
         {/* SharePoint Left Navigation */}
         <div
+          id="site-nav"
           className={`${
-            navOpen ? "translate-x-0" : "-translate-x-full"
-          } md:translate-x-0 transition-transform fixed md:static top-12 bottom-0 left-0 z-40 w-64 max-w-[80vw] overflow-y-auto bg-white border-r border-[#edebe9] p-4 flex-shrink-0`}
+            navOpen ? "translate-x-0 visible" : "-translate-x-full invisible"
+          } md:translate-x-0 md:visible transition-transform fixed md:static top-12 bottom-0 left-0 z-40 w-64 max-w-[80vw] overflow-y-auto bg-white border-r border-[#edebe9] p-4 flex-shrink-0`}
         >
           <nav className="space-y-1">
             {/* <div className="text-sm font-large text-[#323130] px-3 py-2">
