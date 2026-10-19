@@ -36,7 +36,7 @@ export default function AppSP() {
 
   const contact = {
     email: "larraiz@outlook.com",
-    phone: "+1 ",
+    phone: "4078217287",
   };
 
   const handleNavClick =
