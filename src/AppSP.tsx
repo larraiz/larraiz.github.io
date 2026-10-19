@@ -36,7 +36,7 @@ export default function AppSP() {
 
   const contact = {
     email: "larraiz@outlook.com",
-    phone: "4078217287",
+    phone: "+1 (407) 821-7287",
   };
 
   const handleNavClick =
@@ -193,7 +193,7 @@ export default function AppSP() {
                 </p>
                 <div className="flex gap-4 flex-wrap">
                   <a href={`mailto:${contact.email}`} className="inline-flex items-center gap-2 bg-[#0078d4] hover:bg-[#106ebe] px-4 py-2 rounded-sm text-sm text-white transition-colors"><Mail className="w-4 h-4" />{contact.email}</a>
-                  <a href={`tel:${contact.phone}`} className="inline-flex items-center gap-2 border border-[#0078d4] text-[#0078d4] hover:bg-slate-100 dark:hover:bg-slate-800 px-4 py-2 rounded-sm text-sm transition-colors"><Phone className="w-4 h-4" />{contact.phone}</a>
+                  <a href={`tel:${contact.phone.replace(/[^\d+]/g, "")}`} className="inline-flex items-center gap-2 border border-[#0078d4] text-[#0078d4] hover:bg-slate-100 dark:hover:bg-slate-800 px-4 py-2 rounded-sm text-sm transition-colors"><Phone className="w-4 h-4" />{contact.phone}</a>
                 </div>
               </div>
             </header>
@@ -320,7 +320,7 @@ export default function AppSP() {
                     </p>
                     <div className="flex flex-wrap gap-4">
                       <a href={`mailto:${contact.email}`} className="inline-flex items-center gap-2 bg-white text-[#0078d4] hover:bg-white/90 px-6 py-3 rounded-md transition-colors text-lg font-medium shadow-lg"><Mail className="w-5 h-5" /> Contact via Email</a>
-                      <a href={`tel:${contact.phone}`} className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white px-6 py-3 rounded-md transition-colors text-lg font-medium border border-white/30"><Phone className="w-5 h-5" /> Schedule a Call</a>
+                      <a href={`tel:${contact.phone.replace(/[^\d+]/g, "")}`} className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white px-6 py-3 rounded-md transition-colors text-lg font-medium border border-white/30"><Phone className="w-5 h-5" /> Schedule a Call</a>
                     </div>
                   </div>
                 </div>
