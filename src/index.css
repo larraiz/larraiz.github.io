@@ -25,9 +25,13 @@ a {
 }
 
 
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
 body {
   margin: 0;
-  min-width: 320px;
+  overflow-x: hidden;
   min-height: 100vh;
   background-color: #f8f9fa;
   background-image: 

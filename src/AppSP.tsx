@@ -8,13 +8,14 @@ import {
   CheckCircle,
 } from "lucide-react";
 import { motion } from "framer-motion";
-import { type MouseEvent } from "react";
+import { useState, type MouseEvent } from "react";
 
 // Default export React component for a single-file portfolio website
 // Tailwind CSS required. To preview: create a new React app (Vite or CRA/Next),
 // install lucide-react and framer-motion, enable Tailwind, then drop this file as a page or component.
 
 export default function AppSP() {
+  const [navOpen, setNavOpen] = useState(false);
   // const [expandedAccordion, setExpandedAccordion] = useState<string | null>(null);
 
   const contact = {
@@ -77,6 +78,7 @@ export default function AppSP() {
       e.preventDefault();
       const element = document.querySelector(sectionId);
       element?.scrollIntoView({ behavior: "smooth" });
+      setNavOpen(false);
     };
 
   const strengths = [
@@ -134,11 +136,22 @@ export default function AppSP() {
   ];
 
   return (
-    <div className="flex flex-col h-screen bg-[#faf9f8] text-[#323130]">
+    <div className="flex flex-col h-[100dvh] w-full overflow-x-hidden bg-[#faf9f8] text-[#323130]">
       {/* SharePoint Suite Bar */}
-      <div className="h-12 bg-[#0078d4] text-white flex items-center px-6 flex-shrink-0">
+      <div className="h-12 bg-[#0078d4] text-white flex items-center px-4 md:px-6 flex-shrink-0 pt-[env(safe-area-inset-top)] box-content">
         <div className="flex items-center justify-between w-full">
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-3 md:gap-6">
+            <button
+              type="button"
+              aria-label="Toggle navigation"
+              aria-expanded={navOpen}
+              onClick={() => setNavOpen((o) => !o)}
+              className="md:hidden p-2 -ml-2 rounded hover:bg-white/10"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+              </svg>
+            </button>
             <div className="flex items-center gap-2">
               <span className="text-sm font-medium flex items-center gap-2">
                 SharePoint Developer
@@ -161,9 +174,19 @@ export default function AppSP() {
       </div>
 
       {/* Main container with left navigation */}
-      <div className="flex flex-1 min-h-0">
+      <div className="relative flex flex-1 min-h-0 min-w-0">
+        {navOpen && (
+          <div
+            className="md:hidden fixed inset-0 top-12 bg-black/40 z-30"
+            onClick={() => setNavOpen(false)}
+          />
+        )}
         {/* SharePoint Left Navigation */}
-        <div className="w-64 bg-white border-r border-[#edebe9] p-4 flex-shrink-0">
+        <div
+          className={`${
+            navOpen ? "translate-x-0" : "-translate-x-full"
+          } md:translate-x-0 transition-transform fixed md:static top-12 bottom-0 left-0 z-40 w-64 max-w-[80vw] overflow-y-auto bg-white border-r border-[#edebe9] p-4 flex-shrink-0`}
+        >
           <nav className="space-y-1">
             {/* <div className="text-sm font-large text-[#323130] px-3 py-2">
               menu
@@ -232,9 +255,9 @@ export default function AppSP() {
         </div>
 
         {/* Main content area */}
-        <div className="flex-1 overflow-y-auto bg-white w-full">
+        <div className="flex-1 min-w-0 overflow-y-auto overflow-x-hidden bg-white">
           {/* Portfolio container - SharePoint uses max-width-1268px */}
-          <div className="max-w-[1268px] mx-auto px-6 py-6">
+          <div className="max-w-[1268px] mx-auto px-4 md:px-6 py-6 break-words">
             {/* SharePoint-style Page Header */}
             <header id="header" className="mb-8">
               <motion.h1
