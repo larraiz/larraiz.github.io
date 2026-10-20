@@ -2,18 +2,50 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Fluent 2 (Microsoft 365) design tokens */
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  --fl-canvas: #f5f5f5;
+  --fl-rail: #ebebeb;
+  --fl-card: #ffffff;
+  --fl-hover: #f0f0f0;
+  --fl-stroke: #e0e0e0;
+  --fl-fg: #242424;
+  --fl-fg2: #424242;
+  --fl-fg3: #616161;
+  --fl-brand: #0f6cbd;
+  --fl-brand-hover: #115ea3;
+  --fl-brand-subtle: #ebf3fc;
+  --fl-success: #107c10;
+  --suite-bar: #0f6cbd;
+
+  font-family: "Segoe UI Variable", "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
   line-height: 1.5;
   font-weight: 400;
   font-size: 16px;
-  color-scheme: light dark;
-  color: #e5e7eb;
-  background-color: #111827;
+  color-scheme: light;
+  color: var(--fl-fg);
+  background-color: var(--fl-canvas);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+:root.dark {
+  --fl-canvas: #1f1f1f;
+  --fl-rail: #141414;
+  --fl-card: #292929;
+  --fl-hover: #3d3d3d;
+  --fl-stroke: #3d3d3d;
+  --fl-fg: #ffffff;
+  --fl-fg2: #d6d6d6;
+  --fl-fg3: #adadad;
+  --fl-brand: #479ef5;
+  --fl-brand-hover: #2886de;
+  --fl-brand-subtle: #082338;
+  --fl-success: #54b054;
+  --suite-bar: #0c3b5e;
+  color-scheme: dark;
 }
 
 html {
@@ -24,41 +56,36 @@ body {
   margin: 0;
   overflow-x: hidden;
   min-height: 100vh;
-  background-color: #111827;
-  background-image:
-    linear-gradient(90deg, rgba(148, 163, 184, 0.06) 1px, transparent 1px),
-    linear-gradient(rgba(148, 163, 184, 0.06) 1px, transparent 1px);
-  background-size: 20px 20px;
+  background-color: var(--fl-canvas);
 }
 
 a {
-  font-weight: 500;
-  color: #60a5fa;
   text-decoration: inherit;
 }
 
-button {
-  background-color: transparent;
+.suite-bar {
+  background-color: var(--suite-bar);
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #1f2937;
-    background-color: #f8fafc;
-  }
+/* Copilot-style gradients used to highlight AI content */
+.copilot-tile,
+.copilot-border {
+  background-image: linear-gradient(135deg, #2563eb 0%, #7c3aed 55%, #db2777 100%);
+}
 
-  body {
-    background-color: #f8f9fa;
-    background-image:
-      linear-gradient(90deg, rgba(0, 51, 102, 0.03) 1px, transparent 1px),
-      linear-gradient(rgba(0, 51, 102, 0.03) 1px, transparent 1px);
-  }
+.copilot-hero {
+  background-image:
+    radial-gradient(circle at 85% 20%, rgba(219, 39, 119, 0.55), transparent 45%),
+    linear-gradient(120deg, #0f6cbd 0%, #3b3fc4 50%, #7c3aed 100%);
+}
 
-  a {
-    color: #646cff;
-  }
+.copilot-text {
+  background-image: linear-gradient(90deg, #0f6cbd, #7c3aed 60%, #db2777);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
 
-  button {
-    background-color: #f9f9f9;
-  }
+.dark .copilot-text {
+  background-image: linear-gradient(90deg, #479ef5, #a78bfa 60%, #f472b6);
 }
