@@ -68,3 +68,8 @@ npm ci        # install dependencies
 npm run dev   # start the local dev server
 npm run build # type-check and build to dist/
 ```
+
+## License
+
+Copyright © Luis Enrique Arraiz Benitez. **All rights reserved.**
+This code is not open source: you may not copy, modify or redistribute it, or reuse its design, without written permission. See [LICENSE](LICENSE).
